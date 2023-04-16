@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Statistics</title>
+
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'heyurl/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'heyurl/style.css' %}">
+</head>
+
+<body>
+  <!-- {% for url in url_statistics %}
+    <br>
+    {{ url }} --- {{url.url__original_url}}
+    <br>
+  {% endfor %} -->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-sm-4">
+    <a class="navbar-brand" href="#">HeyURL! Statistics</a>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-8 offset-sm-2">
+        <div class="card mb-sm-4">
+          <div class="card-header">
+            <h3>Statistics for: </h3> 
+            <a href="{{ url.original_url }}">{{ url.original_url }}</a> 
+            <p>Total Cicks: {{ url.clicks }}</p>
+          </div>
+          <div class="card-body">
+            {% if url_statistics %}
+            {% load humanize %}
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Visited On</th>
+                  <th scope="col">Platform</th>
+                  <th scope="col">Browser</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for url in url_statistics %}
+                <tr>
+                  <td>{{ url.created_at }}</td>
+                  <td>{{ url.platform }}</td>
+                  <td>{{ url.browser }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <div class="alert alert-light" role="alert">
+              There are no URLs in the system yet!
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

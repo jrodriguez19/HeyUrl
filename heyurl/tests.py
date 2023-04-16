@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
 from .models import Url
 
 class IndexTests(TestCase):
@@ -13,13 +13,13 @@ class IndexTests(TestCase):
         """
         When submitting an invalid URL, an error is returned to the user
         """
-        # response = self.client.get(reverse('store'))
+        #response = self.client.get(reverse('store'))
 
     def test_submitting_new_url_success(self):
         """
         When submitting a valid URL, a success message is displayed
         """
-        # response = self.client.get(reverse('store'))
+        #response = self.client.get(reverse('store'))
 
     def test_visiting_short_url_missing(self):
         """
@@ -27,9 +27,10 @@ class IndexTests(TestCase):
         """
         # response = self.client.get(reverse('u/dne'))
 
+
     def test_visiting_short_url(self):
         """
         If short URL exists, stats logged and redirected to original URL
         """
-        # response = self.client.get(reverse('u/dne'))
+        #response = self.client.get(reverse('u/dne'))
         
